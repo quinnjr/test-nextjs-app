@@ -6,18 +6,17 @@ import { Table } from 'flowbite-react';
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
-  const [limit, setLimit] = useState<number>(10)
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await fetch(`/api/users?limit=${limit}`);
+      const response = await fetch(`/api/users`);
       const data = await response.json();
 
       setUsers(data);
     }
 
     fetchUsers();
-  }, [limit]);
+  }, []);
 
   return (
     <div>
@@ -37,10 +36,6 @@ export default function Home() {
           ))}
         </Table.Body>
       </Table>
-      <div>
-        <label htmlFor="limit">Limit: </label>
-        <input type="number" id="limit" value={limit} onChange={(e) => setLimit(parseInt(e.target.value))} />
-      </div>
     </div>
   );
 }
