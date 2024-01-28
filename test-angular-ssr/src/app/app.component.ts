@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
   constructor(private readonly http: HttpClient) {}
 
   public ngOnInit() {
-    initFlowbite();
+    if (document) {
+      initFlowbite();
+    }
 
     this.users = this.http.get<User[]>('http://localhost:3000/api/users');
   }
