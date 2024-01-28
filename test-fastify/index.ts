@@ -7,7 +7,7 @@ import { default as fastifyCors} from '@fastify/cors'
 const app = fastify();
 
 app.register(fastifyCors as any, {
-  origin: 'http://localhost:4200',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 });
